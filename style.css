@@ -20,10 +20,11 @@ body{
     background-color: white;
 }
 .hold{
-    border: solid #ccc 4px;
+    border: solid blue 4px;
+    background-color: yellow;
 }
 .hovered{
-    background: #f4f4f4;
+    background: green;
     border-style: dashed;
 }
 .invisible{
