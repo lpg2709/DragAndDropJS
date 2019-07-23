@@ -1,14 +1,13 @@
 body{
-    background: gray;
+    background: #353535;
 }
 
 .fill{
-    background: darkgrey;
-    position: relative;
+    display: inline-block;
+    background: #00dd42;
     height: 150px;
     width: 150px;
-    top: 5px;
-    left: 5px;
+    margin: 5px;
     cursor: pointer;
 }
 .empty{
@@ -16,17 +15,17 @@ body{
     height: 160px;
     width: 160px;
     margin: 10px;
-    border: 3px black solid;
-    background-color: white;
+    border: 3px #70009c solid;
+    background-color: #170080;
 }
 .hold{
-    border: solid blue 4px;
-    background-color: yellow;
+    border: 4px #ccc solid;
 }
 .hovered{
-    background: green;
+    display: inline-block;
+    height: 160px;
+    width: 160px;
+    margin: 10px;
+    background: #ec9e9e;
     border-style: dashed;
-}
-.invisible{
-    display: none;
 }

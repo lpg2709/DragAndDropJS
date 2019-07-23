@@ -1,36 +1,58 @@
 const fill = document.querySelector('.fill');
 const empties = document.querySelectorAll('.empty');
-
-fill.addEventListener('dragstart',dragStart);
-fill.addEventListener('dragend',dragEnd);
+var objectDragged;
+// Call the events
+fill.addEventListener('dragstart',dragStart,false);
+fill.addEventListener('dragend',dragEnd,false);
    
 for(const empty of empties){
-    empty.addEventListener('dragover', dargOver);
-    empty.addEventListener('dragenter', dargEnter);
-    empty.addEventListener('dragleave', dargLeave);
-    empty.addEventListener('drop', dargDrop);
+    empty.addEventListener('dragover', dargOver,false);
+    empty.addEventListener('dragenter', dargEnter,false);
+    empty.addEventListener('dragleave', dargLeave,false);
+    empty.addEventListener('drop', dargDrop,false);
 }
+// ------------------------------------
 
-function dragStart(){
-   this.className += "hold";
-   //setTimeout(()=> {this.className = 'invisible';} , 0);
+// Handler events
+
+function dragStart(e){
+    objectDragged = e.target;
+    e.dataTransfer.setData("text/plain", e.target.id);
+    e.target.style.opacity = .5;
+   console.log("Start");
 }
     
-function dragEnd(){
-    this.className = 'fill';
+function dragEnd(e){
+    e.target.style.opacity = "";
+    console.log("End");
 }
 
 function dargOver(e){
-    e.preventDefoult();
+    e.preventDefault();
+    console.log("Over");
 }
+
 function dargEnter(e){
-    e.preventDefoult();
-    this.className += 'hovered';    
+    if(e.target.className == "empty" ){
+        e.target.className = "hovered";
+    }
+    console.log("Enter"); 
 }
-function dargLeave(){
-    this.className = 'empty';    
+
+function dargLeave(e){
+    if(e.target.className == "hovered"){
+        e.target.className= "empty";
+    }   
+    console.log("Leave");
 }
-function dargDrop(){
-    this.className = 'empty';
-    this.append(fill);     
+
+function dargDrop(e){
+    e.preventDefault();
+    if(e.target.className == "hovered"){
+        e.target.className = "empty";
+        objectDragged.parentNode.removeChild(objectDragged);
+        e.target.appendChild(objectDragged);
+    }   
+    console.log("Drop");
 }
+// ------------------------------------
