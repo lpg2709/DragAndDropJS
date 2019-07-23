@@ -23,7 +23,7 @@ function dragStart(e){
 }
     
 function dragEnd(e){
-    e.target.style.opacity = "";
+    e.target.style.opacity = "1";
     console.log("End");
 }
 
